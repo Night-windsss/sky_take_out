@@ -101,10 +101,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = new Employee();
         employee.setStatus(status);
         employee.setId(id);
-
-
-
-
         employeeMapper.update(employee);
     }
 
