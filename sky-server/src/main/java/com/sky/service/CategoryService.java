@@ -6,13 +6,15 @@ import com.sky.entity.Category;
 import com.sky.result.PageResult;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 public interface CategoryService {
     PageResult pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
 
     void update(CategoryDTO categoryDTO);
 
-    Category getByType(Integer type);
+    List<Category> getByType(Integer type);
 
     void startorstop(Integer status,Long id);
 

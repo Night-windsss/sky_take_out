@@ -53,9 +53,8 @@ public class CategoryServicelmpl implements CategoryService {
     }
 
     @Override
-    public Category getByType(Integer type) {
-        Category category = categoryMapper.getByType(type);
-        return category;
+    public List<Category> getByType(Integer type) {
+        return categoryMapper.getByType(type);
     }
 
     @Override

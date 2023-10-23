@@ -14,6 +14,8 @@ import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/admin/category")
@@ -45,9 +47,9 @@ public class CategoryController {
     /*根据类型查询分类*/
     @GetMapping("/list")
     @ApiOperation("根据类型查询分类")
-    public Result<Category> getByType(Integer type){
-        Category category = categoryService.getByType(type);
-        return Result.success(category);
+    public Result<List<Category>> getByType(Integer type){
+        List<Category> categoryList = categoryService.getByType(type);
+        return Result.success(categoryList);
     }
 
     /*启用禁用分类*/

@@ -6,3 +6,8 @@ sky:
     database: sky_take_out
     username: root
     password: 13770796063qwe
+  alioss:
+    endpoint: https://oss-cn-nanjing.aliyuncs.com
+    bucket-name: nightwindsss
+    access-key-secret: dYtV5DqWvagGCoZluZfbc1aZqXpSNK
+    access-key-id: LTAI5t6h8z7dRq63sqyAmgqo

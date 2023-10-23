@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface CategoryMapper {
     public Page<Category> pageQuery(CategoryPageQueryDTO categoryPageQueryDTO);
@@ -17,7 +19,7 @@ public interface CategoryMapper {
     void update(Category category);
 
     @Select("select * from category where type = #{type}")
-    Category getByType(Integer type);
+    List<Category> getByType(Integer type);
     @AutoFill(value = OperationType.INSERT)
     @Insert("insert into category (id,type, name, sort, status, create_time, update_time, create_user, update_user) " +
             "values (#{id},#{type},#{name},#{sort},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser})")
