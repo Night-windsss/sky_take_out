@@ -72,4 +72,12 @@ public class DishController {
         dishservice.startorstop(status,id);
         return Result.success();
     }
+
+    @ApiOperation("根据不同信息查询菜品信息")
+    @GetMapping("/list")
+    public Result<List<Dish>> list(Long categoryId){
+        log.info("查询菜品信息：{}",categoryId);
+        List<Dish> dishList = dishservice.list(categoryId);
+        return Result.success(dishList);
+    }
 }
