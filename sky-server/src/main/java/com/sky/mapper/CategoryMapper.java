@@ -18,7 +18,7 @@ public interface CategoryMapper {
     @AutoFill(value = OperationType.UPDATE)
     void update(Category category);
 
-    @Select("select * from category where type = #{type}")
+
     List<Category> getByType(Integer type);
     @AutoFill(value = OperationType.INSERT)
     @Insert("insert into category (id,type, name, sort, status, create_time, update_time, create_user, update_user) " +
