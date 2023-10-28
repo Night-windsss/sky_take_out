@@ -12,7 +12,10 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -25,6 +28,7 @@ public class DishController {
     private DishService dishservice;
     @PostMapping
     @ApiOperation("新增菜品")
+    @CacheEvict(cacheNames = "dishCache",key = "#dishDto.categoryId")
     public Result save(@RequestBody DishDTO dishDto){
         log.info("菜品保存:{}",dishDto);
         dishservice.save(dishDto);
@@ -41,6 +45,7 @@ public class DishController {
     /*删除菜品*/
     @DeleteMapping
     @ApiOperation("删除菜品")
+    @CacheEvict(cacheNames = "dishCache",allEntries = true)
     public Result Delete(@RequestParam List<Long> ids){
         log.info("菜品删除：{}",ids);
         dishservice.deleteBatch(ids);
@@ -58,6 +63,7 @@ public class DishController {
 
     @PutMapping
     @ApiOperation("更新菜品信息")
+    @CacheEvict(cacheNames = "dishCache",allEntries = true)
     /*修改菜品*/
     public Result update(@RequestBody DishDTO dishDTO){
         log.info("更新菜品信息：{}",dishDTO);
@@ -67,6 +73,7 @@ public class DishController {
 
     @ApiOperation("启用禁用分类")
     @PostMapping("status/{status}")
+    @CacheEvict(cacheNames = "dishCache",allEntries = true)
     public Result startorstop(@PathVariable Integer status,Long id){
         log.info("分类启用或者禁用");
         dishservice.startorstop(status,id);
