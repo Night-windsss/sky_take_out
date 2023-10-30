@@ -30,4 +30,6 @@ public interface OrderService {
     void complete(Long id);
 
     OrderPaymentVO payment(OrdersPaymentDTO ordersPaymentDTO);
+
+    void reminder(Long id);
 }
